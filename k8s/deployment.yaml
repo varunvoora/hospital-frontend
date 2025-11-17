@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hospital-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hospital-frontend
+  template:
+    metadata:
+      labels:
+        app: hospital-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: hospital-frontend:local
+          # If using cloud registry: <your-username>/hospital-frontend:latest
+          ports:
+            - containerPort: 80
